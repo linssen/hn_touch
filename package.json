@@ -1,0 +1,16 @@
+{
+  "name": "hn_touch",
+  "version": "0.0.1",
+  "description": "Hacker News touch",
+  "repository": "",
+  "author": "Wil Linssen http://linssen.me/",
+  "license": "BSD",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-coffee": "~0.6.4",
+    "grunt-contrib-concat": "~0.1.3",
+    "grunt-contrib-watch": "~0.3.1",
+    "grunt-contrib-sass": "~0.3.0",
+    "grunt-contrib-handlebars": "~0.5.8"
+  }
+}

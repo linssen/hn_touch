@@ -1,0 +1,5 @@
+/env
+/node_modules
+/static/**/dist/**
+/static/**/build/**
+/local_settings.py
