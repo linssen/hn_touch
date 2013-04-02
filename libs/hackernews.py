@@ -1,3 +1,5 @@
+import re
+
 from bs4 import BeautifulSoup
 import requests
 
@@ -13,14 +15,24 @@ class HackerNews(object):
         page = self.get_page(url)
         soup = BeautifulSoup(page)
         articles = []
-        story_rows = soup.find_all('td', class_='title')
-        self.num_stories = len(story_rows)/2
+        titles = soup.find_all('td', class_='title')
+        subtexts = soup.find_all('td', class_='subtext')
+        self.num_stories = len(titles)/2
+        nore = re.compile('^(\d+)')
 
-        for i, row in enumerate(tuple(story_rows)):
+        for i, row in enumerate(tuple(titles)):
             if i % 2:
                 article = Article()
+                subtext = subtexts[((i+1)/2)-1]
                 article.title = unicode(row.a.string)
                 article.url = unicode(row.a['href'])
+                article.score = int(nore.match(subtext.span.string).group(0))
+                article.submitter = subtext.a.text
+                num_comments = nore.match(subtext.a.find_next_sibling('a').text)
+                if num_comments:
+                    article.comment_count = int(num_comments.group(0))
+                else:
+                    article.comment_count = 0
                 articles.append(article)
 
         return articles
