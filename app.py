@@ -13,7 +13,7 @@ def home():
 @app.route("/api/page")
 def api_page():
     hn = HackerNews()
-    articles = hn.get_top_stories()
+    articles = hn.get_top_article()
 
     return jsonify(articles=[article.__dict__ for article in articles])
 

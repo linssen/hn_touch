@@ -39,8 +39,8 @@ class HackerNews(object):
 
         return articles
 
-    def get_top_stories(self):
-        """Get's the top stories (front page)."""
+    def get_top_article(self):
+        """Gets the top stories (front page)."""
         articles = self.find_articles(self.base_url)
         return articles
 
