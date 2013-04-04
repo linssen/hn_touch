@@ -1,4 +1,46 @@
-* {
-    margin:0;
-    padding:0;
+/*
+
+    - MIXINS AND CONFIG
+    - BODY
+    - ARTICLE LIST
+
+*/
+
+@import "reset";
+
+/* MIXINS AND CONFIG
+--------------------------------------------------------------------------- */
+$normal:400;
+$bold:700;
+$basefont:16;
+
+@function calc_em($target, $context: $basefont) {
+    @return ($target / $context) * 1em;
+}
+
+/* BODY
+--------------------------------------------------------------------------- */
+body {
+    font-family:'Ubuntu', sans-serif;
+    font-size:calc_em(14);
+}
+
+
+/* ARTICLE LIST
+--------------------------------------------------------------------------- */
+#article_list {
+    li {
+        padding:1em;
+        border-bottom:1px solid #ddd;
+    }
+    a {
+        color:#333;
+        text-decoration:none;
+    }
+    h4 {
+        font-weight:$bold;
+    }
+    p {
+        font-size:calc_em(12);
+    }
 }
