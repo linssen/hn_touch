@@ -24,17 +24,36 @@ class HackerNews(object):
             if i % 2:
                 article = Article()
                 subtext = subtexts[((i+1)/2)-1]
-                comment_link = subtext.a.find_next_sibling('a')
                 article.title = unicode(row.a.string)
                 article.url = unicode(row.a['href'])
-                article.score = int(nore.match(subtext.span.string).group(0))
-                article.submitter = subtext.a.text
-                article.id = int(comment_link['href'][8:])
-                num_comments = nore.match(comment_link.text)
-                if num_comments:
-                    article.comment_count = int(num_comments.group(0))
+
+                # Score
+                if subtext.span:
+                    article.score = int(nore.match(subtext.span.string).group(0))
                 else:
-                    article.comment_count = 0
+                    article.score = 0
+
+                # Submitter
+                if subtext.a:
+                    article.submitter = subtext.a.text
+                else:
+                    article.submitter = 'anonymous'
+
+                # ID - can actually be null
+                if subtext.span:
+                    article.id = int(subtext.span['id'][8:])
+                else:
+                    article.id = None
+
+                # Comment info
+                if subtext.a:
+                    comment_link = subtext.a.find_next_sibling('a')
+                    num_comments = nore.match(comment_link.text)
+                    if num_comments:
+                        article.comment_count = int(num_comments.group(0))
+                    else:
+                        article.comment_count = 0
+
                 articles.append(article)
 
         return articles
