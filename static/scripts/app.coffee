@@ -1,27 +1,17 @@
 window.app = window.app || {}
 
 $(->
-    API_BASE = "http://api.ihackernews.com"
+    API_BASE = "/api"
 
-    app.Article = Backbone.Model.extend(
-        defaults:
-            title: "",
-
-        url: ->
-            return "#{API_BASE}/post/#{this.id}"
-    )
+    app.Article = Backbone.Model.extend()
 
     app.ArticleList = Backbone.Collection.extend(
         model: app.Article
 
         url: "#{API_BASE}/page"
 
-        sync: (method, model, options) ->
-            options = _.extend({dataType: 'jsonp'}, options)
-            Backbone.sync.call(this, method, model, options)
-
         parse: (response) ->
-            return response.items
+            return response.objects
     )
     app.Articles = new app.ArticleList();
 
@@ -31,7 +21,13 @@ $(->
         template: app.templates.article
 
         initialize: ->
-            console.log @template
+            @listenTo @model, "change", @render
+            @listenTo @model, "destroy", @remove
+
+        render: ->
+            @$el.attr("id", @model.get "id")
+            @$el.html(@template(@model.toJSON()))
+            return this
     )
 
     app.AppView = Backbone.View.extend(
@@ -44,11 +40,11 @@ $(->
 
             app.Articles.fetch()
 
-        addOne: (article) =>
-            console.log article
+        addOne: (article) ->
             view = new app.ArticleView({model: article})
+            $("#article_list").append(view.render().el)
 
-        addAll: =>
+        addAll: ->
             this.$("#article_list").html("")
             app.Articles.each(@addOne, this)
     )
