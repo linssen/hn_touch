@@ -17,5 +17,13 @@ def api_page():
 
     return jsonify(articles=[article.__dict__ for article in articles])
 
+@app.route("/api/<int:story_id>")
+def api_article(story_id):
+    hn = HackerNews()
+    article = hn.get_article(story_id)
+
+    return jsonify(article=article.__dict__)
+
 if __name__ == "__main__":
+    app.debug = True
     app.run()

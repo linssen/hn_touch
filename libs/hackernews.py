@@ -44,6 +44,12 @@ class HackerNews(object):
         articles = self.find_articles(self.base_url)
         return articles
 
+    def get_article(self, story_id):
+        """Gets an individual id."""
+        url = '%s/item?id=%d' % (self.base_url, story_id)
+        article = self.find_articles(url)[0]
+        return article
+
     def __init__(self):
         self.base_url = 'http://news.ycombinator.com'
         self.num_stories = 0
