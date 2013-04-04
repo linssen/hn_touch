@@ -27,11 +27,11 @@ class HackerNews(object):
                 article.title = unicode(row.a.string)
                 article.url = unicode(row.a['href'])
 
-                # Score
+                # Points
                 if subtext.span:
-                    article.score = int(nore.match(subtext.span.string).group(0))
+                    article.points = int(nore.match(subtext.span.string).group(0))
                 else:
-                    article.score = 0
+                    article.points = 0
 
                 # Submitter
                 if subtext.a:
@@ -78,4 +78,4 @@ class Article(object):
     id = 0
     title = ''
     url = ''
-    score = 0
+    points = 0
