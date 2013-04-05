@@ -18,7 +18,7 @@ $(->
     app.ArticleView = Backbone.View.extend(
         tagName: "li"
 
-        template: app.templates.article
+        template: app.templates.article_list
 
         initialize: ->
             @listenTo @model, "change", @render
