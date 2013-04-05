@@ -10,7 +10,10 @@ hn = HackerNews()
 
 @app.route("/")
 def home():
-    return render_template('index.html')
+    return render_template(
+        'index.html',
+        READABILITY_API_KEY=app.config['READABILITY_API_KEY']
+    )
 
 @app.route("/api/page")
 def api_page():
