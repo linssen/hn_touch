@@ -1,5 +1,5 @@
 (->
-    WebFontConfig =
+    window.WebFontConfig =
         google: {families: ["Ubuntu:400,700:latin", 'Dr+Sugiyama::latin']}
 
     wf = document.createElement('script')
@@ -9,4 +9,4 @@
     wf.async = 'true'
     s = document.getElementsByTagName("script")[0]
     s.parentNode.insertBefore(wf, s)
-)()
+)(window)
