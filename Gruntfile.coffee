@@ -73,4 +73,4 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks "grunt-contrib-handlebars"
     grunt.loadNpmTasks "grunt-contrib-uglify"
 
-    grunt.registerTask "default", ["coffee", "sass", "handlebars", "concat"]
+    grunt.registerTask "default", ["coffee", "sass", "handlebars", "uglify"]
