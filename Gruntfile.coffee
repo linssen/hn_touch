@@ -17,6 +17,17 @@ module.exports = (grunt) ->
                         "<%= paths.scripts %>build/*.js"
                         "<%= paths.scripts %>templates/build/*.hbs"
                     ]
+        uglify:
+            scripts:
+                files:
+                    "<%= paths.scripts %>dist/hn.js": [
+                        "<%= paths.scripts %>libs/underscore/underscore.js"
+                        "<%= paths.scripts %>libs/jquery/jquery.js"
+                        "<%= paths.scripts %>libs/handlebars/handlebars.js"
+                        "<%= paths.scripts %>libs/**/*.js"
+                        "<%= paths.scripts %>build/*.js"
+                        "<%= paths.scripts %>templates/build/*.hbs"
+                    ]
         coffee:
             scripts:
                 files: [
@@ -60,5 +71,6 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks "grunt-contrib-concat"
     grunt.loadNpmTasks "grunt-contrib-sass"
     grunt.loadNpmTasks "grunt-contrib-handlebars"
+    grunt.loadNpmTasks "grunt-contrib-uglify"
 
-    grunt.registerTask "default", ["coffee", "sass", "concat", "handlebars"]
+    grunt.registerTask "default", ["coffee", "sass", "handlebars", "concat"]
