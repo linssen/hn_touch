@@ -1,11 +1,12 @@
-<div class="article">
+<ul class="controls">
+    <li class="close"><a href="#">x</a></li>
+</ul>
 
-    <a href="{{ url }}">
-        <h4>{{ title }}</h4>
-        <p class="subtext">
-            {{ points }} points by {{ submitter }}
-            {{ comment_count }} comments
-        </p>
-    </a>
+<div class="article_detail">
+
+    <h1>{{ title }}</h1>
+    <p>Comments: {{ comment_count }}</p>
+
+    {{{ mobalised }}}
 
 </div>

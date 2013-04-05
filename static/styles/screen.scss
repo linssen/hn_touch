@@ -3,6 +3,7 @@
     - MIXINS AND CONFIG
     - BODY
     - ARTICLE LIST
+    - ARTICLE DETAIL
 
 */
 
@@ -71,5 +72,80 @@ body {
     }
     p {
         font-size:calc_em(12);
+    }
+}
+
+
+/* ARTICLE DETAIL
+--------------------------------------------------------------------------- */
+.articleDetail {
+    position:fixed;
+    overflow-y:auto;
+    top:5%;
+    left:5%;
+    width:90%;
+    height:90%;
+    background:#fff;
+    -webkit-box-shadow:0 0 10px rgba(0,0,0,0.5);
+
+    .controls {
+        position:fixed;
+        top:0;
+        right:0;
+    }
+    .controls a {
+        display:block;
+        padding:1em;
+        text-align:center;
+        background:rgba(0,0,0,0.2);
+    }
+    > div {
+        max-width:500px;
+        padding:2em;
+        margin:0 auto;
+        font-family:'Droid Serif', serif;
+        line-height:1.2em;
+
+        h1,
+        h2 {
+            font-family:'Ubuntu', sans-serif;
+            font-weight:700;
+            font-size:calc_em(24);
+            margin-bottom:1em;
+        }
+
+        img {
+            max-width:100%;
+        }
+
+        table {
+            border-collapse:collapse;
+            border-spacing:0;
+
+            td,
+            th {
+                border:1px solid #ddd;
+                padding:0.2em;
+            }
+        }
+
+        p,
+        blockquote,
+        ul,
+        dl,
+        ol {
+            margin-bottom:1em;
+        }
+        ul,
+        dl,
+        ol {
+            list-style-type:disc;
+
+            li,
+            dd {
+                margin-bottom:0.5em;
+            }
+        }
+
     }
 }

@@ -19,8 +19,11 @@ $(->
                     token: window.READABILITY_API_KEY
                 dataType: "jsonp"
                 success: (data) ->
-                    $("body").removeClass("loading")
-                    console.log data
+                    detailView = new app.ArticleDetailView({model: _self})
+                    $("body")
+                        .removeClass("loading")
+                        .prepend(detailView.render().el)
+
                     _self.set(
                         "mobalised": data.content
                         "excerpt": data.excerpt
@@ -50,7 +53,7 @@ $(->
             "click a": "openDetail"
 
         initialize: ->
-            @listenTo @model, "change", @render
+            @listenTo @model, "change:id", @render
             @listenTo @model, "destroy", @remove
 
         render: ->
@@ -62,6 +65,26 @@ $(->
             event.preventDefault()
             $("body").addClass("loading")
             @model.mobalise()
+    )
+
+    app.ArticleDetailView = Backbone.View.extend(
+        tagName: "div"
+
+        events:
+            "click .close>a": "remove"
+
+        attributes:
+            class: "articleDetail"
+
+        template: app.templates.article_detail
+
+        initialize: ->
+            @listenTo @model, "change", @render
+            @listenTo @model, "destroy", @remove
+
+        render: ->
+            @$el.html(@template(@model.toJSON()))
+            return this
     )
 
     app.AppView = Backbone.View.extend(

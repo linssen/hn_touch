@@ -1,6 +1,9 @@
 (->
     window.WebFontConfig =
-        google: {families: ["Ubuntu:400,700:latin", 'Dr+Sugiyama::latin']}
+        google: {families: [
+            "Ubuntu:400,700:latin",
+            'Droid+Serif:400,700,400italic,700italic:latin'
+        ]}
 
     wf = document.createElement('script')
     prefix = if "https:" == document.location.protocol then "https" else "http"
