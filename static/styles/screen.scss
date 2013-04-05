@@ -27,11 +27,15 @@ body {
     &.loading:before {
         content:"loading";
         font-size:calc_em(12);
-        padding:calc_em(3, 12);
+        padding:0 calc_em(3, 12);
         color:rgb(255,255,255);
         display:block;
         background:rgb(65,131,196);
         text-align:center;
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
     }
 }
 
