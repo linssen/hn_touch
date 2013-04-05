@@ -35,10 +35,14 @@ $(->
 
         initialize: ->
 
+            $("body").addClass("loading")
+
             @listenTo(app.Articles, "add", @addOne)
             @listenTo(app.Articles, "reset", @addAll)
 
-            app.Articles.fetch()
+            app.Articles.fetch(
+                success: -> $("body").removeClass("loading")
+            )
 
         addOne: (article) ->
             view = new app.ArticleView({model: article})

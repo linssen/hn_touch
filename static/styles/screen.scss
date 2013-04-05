@@ -23,6 +23,16 @@ $basefont:16;
 body {
     font-family:'Ubuntu', sans-serif;
     font-size:calc_em(14);
+
+    &.loading:before {
+        content:"loading";
+        font-size:calc_em(12);
+        padding:calc_em(3, 12);
+        color:rgb(255,255,255);
+        display:block;
+        background:rgb(65,131,196);
+        text-align:center;
+    }
 }
 
 #header {
