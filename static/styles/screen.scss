@@ -34,12 +34,13 @@ body {
 --------------------------------------------------------------------------- */
 #article_list {
     li {
-        padding:1em;
         border-bottom:1px solid #ddd;
     }
     a {
+        padding:1em;
         color:#333;
         text-decoration:none;
+        display:block;
     }
     h4 {
         font-weight:$bold;
