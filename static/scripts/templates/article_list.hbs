@@ -6,7 +6,10 @@
             {{ points }} points by {{ submitter }}
             {{ comment_count }} comments
         </p>
-        {{#if mobalised }}{{ mobalised }}{{/if}}
+        {{#if mobalised }}
+        <p>Word count: {{ word_count }}</p>
+        <p>Reading time: {{ reading_time }} minutes</p>
+        {{/if}}
     </a>
 
 </div>

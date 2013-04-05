@@ -5,6 +5,10 @@ $(->
     READABILITY = "https://readability.com/api/content/v1/parser"
 
     app.Article = Backbone.Model.extend(
+        readingTime: (word_count) =>
+            wordsPerMinute = 250
+            return (word_count / wordsPerMinute).toFixed(2)
+
         mobalise: ->
             _self = this
             $.ajax(
@@ -16,7 +20,13 @@ $(->
                 dataType: "jsonp"
                 success: (data) ->
                     $("body").removeClass("loading")
-                    _self.set("mobalised", data.content)
+                    console.log data
+                    _self.set(
+                        "mobalised": data.content
+                        "excerpt": data.excerpt
+                        "word_count": data.word_count
+                        "reading_time": _self.readingTime(data.word_count)
+                    )
             )
     )
 
