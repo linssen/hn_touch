@@ -20,9 +20,8 @@ $(->
                 dataType: "jsonp"
                 success: (data) ->
                     detailView = new app.ArticleDetailView({model: _self})
-                    $("body")
-                        .removeClass("loading")
-                        .prepend(detailView.render().el)
+                    $("body").removeClass("loading")
+                    $("#header").after(detailView.render().el)
 
                     _self.set(
                         "mobalised": data.content
@@ -71,18 +70,23 @@ $(->
         tagName: "div"
 
         events:
-            "click .close>a": "remove"
+            "click .close>a": "close"
 
         attributes:
             class: "articleDetail"
 
         template: app.templates.article_detail
 
+        close: ->
+            $("body").removeClass "detail"
+            @remove()
+
         initialize: ->
             @listenTo @model, "change", @render
             @listenTo @model, "destroy", @remove
 
         render: ->
+            $("body").addClass "detail"
             @$el.html(@template(@model.toJSON()))
             return this
     )

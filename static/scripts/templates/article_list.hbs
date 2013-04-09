@@ -1,15 +1,15 @@
 <div class="article">
 
-    <a href="{{ url }}">
-        <h4>{{ title }}</h4>
-        <p class="subtext">
-            {{ points }} points by {{ submitter }}
-            {{ comment_count }} comments
-        </p>
-        {{#if mobalised }}
-        <p>Word count: {{ word_count }}</p>
-        <p>Reading time: {{ reading_time }} minutes</p>
-        {{/if}}
-    </a>
+    <div class="title">
+        <a href="{{ url }}">
+            <h4>{{ title }}</h4>
+            <p class="source">{{ source }}</p>
+        </a>
+    </div>
+
+    <div class="meta">
+        <p class="points">{{ points }}</p>
+        <p class="vote"><a href="https://news.ycombinator.com/vote?for={{ id }}&dir=up">Vote up</a></p>
+    </div>
 
 </div>
