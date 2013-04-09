@@ -27,6 +27,12 @@ class HackerNews(object):
                 article.title = unicode(row.a.string)
                 article.url = unicode(row.a['href'])
 
+                # Source site
+                if row.span:
+                    article.source = re.sub(
+                        r'[\(\)]', '', unicode(row.span.string)
+                    ).strip()
+
                 # Points
                 if subtext.span:
                     article.points = int(nore.match(subtext.span.string).group(0))
@@ -79,3 +85,4 @@ class Article(object):
     title = ''
     url = ''
     points = 0
+    source = ''
