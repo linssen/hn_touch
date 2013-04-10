@@ -179,6 +179,17 @@ body {
             font-size:calc_em(13);
         }
     }
+    .view_original a {
+        width:100%;
+        display:block;
+        clear:both;
+        margin:calc_em(20) 0;
+        text-decoration:none;
+        background:rgb(221,221,221);
+        color:rgb(51,51,51);
+        text-align:center;
+        padding:calc_em(10) 0;
+    }
     > .content {
         font-family:$serif;
         line-height:1.2em;
