@@ -222,7 +222,7 @@ body {
         ul,
         dl,
         ol {
-            margin-bottom:1em;
+            margin-bottom:calc_em(10);
         }
         ul,
         dl,
@@ -231,11 +231,11 @@ body {
 
             li,
             dd {
-                margin-bottom:0.5em;
+                margin-bottom:calc_em(5);
             }
         }
         p {
-            margin:1em 0;
+            margin:calc_em(10) 0;
         }
 
     }
