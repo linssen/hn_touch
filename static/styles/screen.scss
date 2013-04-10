@@ -31,9 +31,9 @@ body {
 #header {
     .title,
     :before {
-        padding:calc_em(5) calc_em(10);
+        padding:calc_em(10) calc_em(10);
         display:block;
-        text-align:center;
+        text-align:left;
     }
     .title {
         background:rgb(51,51,51);
