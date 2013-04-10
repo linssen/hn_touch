@@ -29,13 +29,16 @@ body {
 }
 
 #header {
-    .title {
+    .title,
+    :before {
         padding:calc_em(5) calc_em(10);
+        display:block;
+        text-align:center;
+    }
+    .title {
         background:rgb(51,51,51);
         color:rgb(255,255,255);
-        display:block;
     }
-
     :before {
         position:fixed;
         left:0;
@@ -44,9 +47,6 @@ body {
         content:"loading...";
         background:rgb(255,102,0);
         color:rgb(255,255,255);
-        padding:calc_em(5) 0;
-        text-align:center;
-        display:block;
         width:100%;
         -webkit-transition:opacity 0.3s;
         -moz-transition:opacity 0.3s;
