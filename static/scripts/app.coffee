@@ -77,7 +77,8 @@ $(->
 
         template: app.templates.article_detail
 
-        close: ->
+        close: (event) ->
+            event.preventDefault()
             $("body").removeClass "detail"
             @remove()
 
