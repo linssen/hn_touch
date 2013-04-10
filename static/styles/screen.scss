@@ -203,6 +203,10 @@ body {
         }
 
         img {
+            display:block;
+            float:none;
+            clear:both;
+            margin:calc_em(10) auto;
             max-width:100%;
         }
 
