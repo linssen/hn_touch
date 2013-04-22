@@ -68,6 +68,7 @@ $(->
 
     app.ArticleDetailView = Backbone.View.extend(
         tagName: "div"
+        returnTo: 0
 
         events:
             "click .close>a": "close"
@@ -79,14 +80,17 @@ $(->
 
         close: (event) ->
             event.preventDefault()
+            $(window).scrollTop(@returnTo)
             $("body").removeClass "detail"
             @remove()
 
         initialize: ->
             @listenTo @model, "change", @render
             @listenTo @model, "destroy", @remove
+            @returnTo = $(window).scrollTop()
 
         render: ->
+            $(window).scrollTop(0)
             $("body").addClass "detail"
             @$el.html(@template(@model.toJSON()))
             return this
